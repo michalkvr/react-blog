@@ -1,0 +1,65 @@
+@mixin title-1 {
+  font-size: 4rem;
+  font-family: $font-primary;
+  font-weight: 500;
+  line-height: 4.8rem
+}
+
+@mixin title-2 {
+  font-size: 2.4rem;
+  font-family: $font-primary;
+  font-weight: 500;
+  line-height: 2.8rem
+}
+
+@mixin title-3 {
+  font-size: 1.6rem;
+  font-family: $font-primary;
+  font-weight: 500;
+  line-height: 2rem
+}
+
+@mixin text-1 {
+  font-size: 1.6rem;
+  font-family: $font-primary;
+  font-weight: 400;
+  line-height: 2.4rem
+}
+
+@mixin text-2 {
+  font-size: 1.4rem;
+  font-family: $font-primary;
+  font-weight: 400;
+  line-height: 2rem
+}
+
+@mixin themify($property, $key, $themes: $themes) {
+  @each $theme, $colors in $themes {
+    &.#{$theme}-theme,
+    .#{$theme}-theme & {
+      #{$property}: map-get($colors, $key);
+    }
+  }
+}
+
+@mixin container {
+  box-sizing: border-box;
+  height: 100%;
+  margin: auto;
+  max-width: 108rem;
+  padding: 0 0.8rem;
+  position: relative;
+  width: 100%;
+}
+
+@mixin rounded-sm {
+  border-radius: $border-radius-sm;
+}
+
+@mixin rounded {
+  border-radius: $border-radius-md;
+}
+
+@mixin rounded-circle {
+  border-radius: $border-radius-circle;
+}
