@@ -23,10 +23,13 @@
   "settings": {
     "import/resolver": {
       "node": {
+        "paths": [
+          "src"
+        ],
         "extensions": [
           ".js",
-          ".jsx",
           ".ts",
+          ".d.ts",
           ".tsx"
         ]
       }
@@ -45,16 +48,8 @@
         ]
       }
     ],
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
-    ],
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
     "import/no-extraneous-dependencies": [
       "error",
       {
