@@ -1,4 +1,4 @@
-type Tenant = {
+type TenantType = {
   tenantId: string;
   apiKey: string;
   name: string;
@@ -6,4 +6,4 @@ type Tenant = {
   lastUpdatedAt: string;
 };
 
-export default Tenant;
+export default TenantType;

@@ -1,14 +1,10 @@
-import Comment from './Comment';
-
-type Article = {
+type ArticleType = {
   articleId: string;
   title: string;
   perex: string;
   imageId: string;
   createdAt: string;
   lastUpdatedAt: string;
-  content: string;
-  comments: Comment[];
 };
 
-export default Article;
+export default ArticleType;

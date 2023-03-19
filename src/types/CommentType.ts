@@ -1,4 +1,4 @@
-type Comment = {
+type CommentType = {
   commentId: string;
   articleId: string;
   author: string;
@@ -7,4 +7,4 @@ type Comment = {
   score: number;
 };
 
-export default Comment;
+export default CommentType;
