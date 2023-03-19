@@ -3,18 +3,7 @@
 }
 
 body {
-  @include themify('background-color', 'bg-primary');
-  @include themify('color', 'text-primary');
+  background-color: $color-bg-primary;
+  color: $color-text-primary;
   @include title-1;
-}
-
-a {
-  @include themify('color', 'link');
-  text-decoration: none;
-  opacity: 1;
-  transition: opacity 200ms ease-in-out;
-
-  &:hover {
-    opacity: 0.7;
-  }
 }

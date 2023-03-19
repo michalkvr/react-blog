@@ -4,18 +4,14 @@ $border-radius-sm: 0.4rem;
 $border-radius-md: 0.8rem;
 $border-radius-circle: 50%;
 
-$themes: (
-  light: (
-    primary: #007BFF,
-    secondary: #FFFFFF,
-    bg-primary: #FFFFFF,
-    bg-secondary: #F8F9FA,
-    text-primary: #212529,
-    text-secondary: #6C757D,
-    link: #2B7EFB,
-    danger: #dc3545,
-    success: #28a745,
-    warning: #ffc107,
-    info: #17a2b8
-  )
-);
+$color-primary: #007BFF;
+$color-secondary: #FFFFFF;
+$color-bg-primary: #FFFFFF;
+$color-bg-secondary: #F8F9FA;
+$color-text-primary: #212529;
+$color-text-secondary: #6C757D;
+$color-link: #2B7EFB;
+$color-danger: #dc3545;
+$color-success: #28a745;
+$color-warning: #ffc107;
+$color-info: #17a2b8;

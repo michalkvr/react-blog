@@ -1,3 +1,5 @@
+@import './variables';
+
 @mixin title-1 {
   font-size: 4rem;
   font-family: $font-primary;
@@ -33,15 +35,6 @@
   line-height: 2rem
 }
 
-@mixin themify($property, $key, $themes: $themes) {
-  @each $theme, $colors in $themes {
-    &.#{$theme}-theme,
-    .#{$theme}-theme & {
-      #{$property}: map-get($colors, $key);
-    }
-  }
-}
-
 @mixin container {
   box-sizing: border-box;
   height: 100%;
@@ -62,4 +55,18 @@
 
 @mixin rounded-circle {
   border-radius: $border-radius-circle;
+}
+
+@mixin hover {
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+@mixin link {
+  @include hover;
+  color: $color-link;
+  text-decoration: none;
+  opacity: 1;
+  transition: opacity 200ms ease-in-out;
 }
