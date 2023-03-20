@@ -1,0 +1,21 @@
+:root {
+  font-size: 62.5%; // 1rem = 10px  
+}
+
+body {
+  background-color: $color-bg-primary;
+  color: $color-text-primary;
+  @include text-1;
+}
+
+a {
+  text-decoration: none;
+}
+
+main {
+  @include container;
+}
+
+section {
+  margin: 6rem 0;
+}

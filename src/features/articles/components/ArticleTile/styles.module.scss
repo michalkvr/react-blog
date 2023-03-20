@@ -1,0 +1,59 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.title {
+  @include title-2;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.img {
+  height: 100%;
+  object-fit: cover
+}
+
+.info {
+  @include text-2;
+  display: flex;
+  color: $color-text-secondary;
+  gap: 1.2rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 55.7rem;
+}
+
+.perex { 
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.dot {
+  background-color: $color-text-secondary;
+  border-radius: 50%;
+  display: inline-block;
+  height: 0.4rem;
+  margin: auto 0;
+  width: 0.4rem;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+@media only screen and (min-width: $media-md) {
+  .wrapper {
+    flex-direction: row;
+  }
+}
