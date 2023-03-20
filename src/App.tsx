@@ -14,7 +14,7 @@ const user = {
   loggedIn: true,
 };
 
-function App() {
+const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout user={user} />}>
@@ -29,6 +29,6 @@ function App() {
       </Route>
     </Routes>
   );
-}
+};
 
 export default App;

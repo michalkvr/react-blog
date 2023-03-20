@@ -1,5 +1,5 @@
-function ArticleList() {
+const ArticleList = () => {
   return <>My Articles</>;
-}
+};
 
 export default ArticleList;

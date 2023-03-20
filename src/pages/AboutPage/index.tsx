@@ -1,5 +1,5 @@
-function AboutPage() {
+const AboutPage = () => {
   return <main>AboutPage</main>;
-}
+};
 
 export default AboutPage;

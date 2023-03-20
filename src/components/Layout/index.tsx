@@ -6,7 +6,7 @@ type LayoutProps = {
   user: UserType;
 };
 
-function Layout({ user }: LayoutProps) {
+const Layout = ({ user }: LayoutProps) => {
   return (
     <>
       <Header user={user} />
@@ -14,6 +14,6 @@ function Layout({ user }: LayoutProps) {
       {/* <Footer /> */}
     </>
   );
-}
+};
 
 export default Layout;

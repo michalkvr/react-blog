@@ -36,7 +36,7 @@ type HeaderProps = {
   user: UserType;
 };
 
-function Header({ user }: HeaderProps) {
+const Header = ({ user }: HeaderProps) => {
   return (
     <header className={styles.header}>
       <div className={styles.wrapper}>
@@ -80,6 +80,6 @@ function Header({ user }: HeaderProps) {
       </div>
     </header>
   );
-}
+};
 
 export default Header;

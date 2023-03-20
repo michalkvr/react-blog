@@ -1,11 +1,11 @@
 import ArticleList from '../../features/articles/components/ArticleList';
 
-function RecentArticlesPage() {
+const RecentArticlesPage = () => {
   return (
     <main>
       <ArticleList />
     </main>
   );
-}
+};
 
 export default RecentArticlesPage;
