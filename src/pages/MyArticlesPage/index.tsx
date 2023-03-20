@@ -1,5 +1,11 @@
+import ArticleList from '~/features/articles/components/MyArticles';
+
 const MyArticlesPage = () => {
-  return <main>MyArticlesPage</main>;
+  return (
+    <main>
+      <ArticleList />
+    </main>
+  );
 };
 
 export default MyArticlesPage;
