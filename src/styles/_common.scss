@@ -8,10 +8,6 @@ body {
   @include text-1;
 }
 
-a {
-  text-decoration: none;
-}
-
 main {
   @include container;
 }

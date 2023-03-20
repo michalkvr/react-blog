@@ -25,6 +25,7 @@
 .link {
   @include hover;
   color: $color-text-secondary;
+  text-decoration: none;
 }
 
 .active {
