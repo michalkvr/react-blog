@@ -24,7 +24,7 @@ const userNavItems = [
   },
   {
     label: 'Create Article',
-    href: routes.createArticle,
+    href: routes.articleForm,
   },
   {
     label: 'Sign out →',
