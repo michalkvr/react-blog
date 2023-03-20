@@ -61,6 +61,8 @@
       {
         "namedComponents": "arrow-function"
       }
-    ]
+    ],
+    "no-param-reassign": 0,
+    "no-plusplus": "off"
   }
 }

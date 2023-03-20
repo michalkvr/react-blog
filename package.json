@@ -12,6 +12,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "javascript-time-ago": "^2.5.9",
     "react": "^18.2.0",
     "react-axios": "^2.0.6",
     "react-dom": "^18.2.0",

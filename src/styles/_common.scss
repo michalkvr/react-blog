@@ -5,7 +5,7 @@
 body {
   background-color: $color-bg-primary;
   color: $color-text-primary;
-  @include title-1;
+  @include text-1;
 }
 
 a {
@@ -14,4 +14,8 @@ a {
 
 main {
   @include container;
+}
+
+section {
+  margin: 6rem 0;
 }
