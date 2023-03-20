@@ -1,17 +1,23 @@
+import slugify from '~/utils/slugify';
+import ArticleType from '~/types/ArticleType';
+
 import styles from './styles.module.scss';
 
 import cat from '~/assets/cat.png';
-import slugify from '~/utils/slugify';
 
-const article = {
-  title: 'How to make a cat happy',
-  lastUpdatedAt: new Date(),
-  perex:
-    'Cats are the best pets. They are cute, cuddly and they are always there for you. But how to make a cat happy? Here are some tips. Cats are the best pets. They are cute, cuddly and they are always there for you. But how to make a cat happy? Here are some tips. Cats are the best pets. They are cute, cuddly and they are always there for you. But how to make a cat happy? Here are some tips. Cats are the best pets. They are cute, cuddly and they are always there for you. But how to make a cat happy? Here are some tips.',
-  comments: [],
+type ArticleTileProps = {
+  article: ArticleType;
 };
 
-const ArticleTile = () => {
+// Notes for Code Reviewer:
+// -> in api, there isn't an author, so should be discussed with BE team / api provider
+// -> object comming from /articles endpoint doesn't have comments, so "O commennts" are there
+//    temporary till discussed with BE team / api provider
+
+const name = 'Elisabeth Strain';
+const comments = [];
+
+const ArticleTile = ({ article }: ArticleTileProps) => {
   return (
     <article className={styles.articleTile}>
       <div className={styles.wrapper}>
@@ -19,9 +25,9 @@ const ArticleTile = () => {
         <div className={styles.content}>
           <h2 className={styles.title}>{article.title}</h2>
           <div className={styles.info}>
-            <span>Elisabeth Strain</span>
+            <span>{name}</span>
             <span className={styles.dot} />
-            <span>{article.lastUpdatedAt.toLocaleDateString()}</span>
+            <span>{new Date(article.lastUpdatedAt).toLocaleDateString()}</span>
           </div>
           <p className={styles.perex}>{article.perex}</p>
           <div className={styles.actions}>
@@ -31,9 +37,7 @@ const ArticleTile = () => {
             >
               Read whole article
             </a>
-            <div className={styles.comments}>
-              {article.comments.length} comments
-            </div>
+            <div className={styles.comments}>{comments.length} comments</div>
           </div>
         </div>
       </div>

@@ -28,7 +28,7 @@ const userNavItems = [
   },
   {
     label: 'Sign out →',
-    href: routes.signOut,
+    href: routes.logout,
   },
 ];
 
@@ -71,11 +71,9 @@ const Header = ({ user }: HeaderProps) => {
             ))}
           </nav>
         ) : (
-          <a href={routes.login} className={styles.nav}>
-            <NavLink key={routes.login} to={routes.login}>
-              Log In →
-            </NavLink>
-          </a>
+          <NavLink className={styles.nav} key={routes.login} to={routes.login}>
+            Log In →
+          </NavLink>
         )}
       </div>
     </header>
