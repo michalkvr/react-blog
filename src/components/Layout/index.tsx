@@ -1,13 +1,17 @@
 import { Outlet } from 'react-router-dom';
 import Header from '../Header';
-import Footer from '../Footer';
+import UserType from '~/types/UserType';
 
-function Layout() {
+type LayoutProps = {
+  user: UserType;
+};
+
+function Layout({ user }: LayoutProps) {
   return (
     <>
-      <Header />
+      <Header user={user} />
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

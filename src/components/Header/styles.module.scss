@@ -7,6 +7,18 @@
   color: $color-text-secondary;
 }
 
+.wrapper {
+  @include container;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav {
+  align-items: center;
+  display: flex;
+  gap: 4rem
+}
+
 .link {
   @include hover;
   color: $color-text-secondary;

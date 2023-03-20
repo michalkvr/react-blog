@@ -1,5 +1,10 @@
 export default {
-  home: '/recent-articles',
-  recentArticles: '/recent-articles',
   about: '/about',
+  createArticle: '/create-article',
+  home: '/recent-articles',
+  login: '/login',
+  myArticles: '/my-articles',
+  recentArticles: '/recent-articles',
+  signIn: '/sign-in',
+  signOut: '/sign-out',
 };
