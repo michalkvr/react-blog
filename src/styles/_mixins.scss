@@ -70,3 +70,8 @@
   opacity: 1;
   transition: opacity 200ms ease-in-out;
 }
+
+@mixin shadow {
+  box-shadow: $box-shadow;
+  border: none;
+}
