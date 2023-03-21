@@ -15,16 +15,14 @@ const RecentArticlesPage = () => {
   }, []);
 
   return (
-    <main>
-      <section className={styles.recentArticlesPage}>
-        <h1 className={styles.title}>Recent articles</h1>
-        <div className={styles.wrapper}>
-          {articles.map((article) => (
-            <ArticleTile key={article.articleId} article={article} />
-          ))}
-        </div>
-      </section>
-    </main>
+    <section className={styles.recentArticlesPage}>
+      <h1 className={styles.title}>Recent articles</h1>
+      <div className={styles.wrapper}>
+        {articles.map((article) => (
+          <ArticleTile key={article.articleId} article={article} />
+        ))}
+      </div>
+    </section>
   );
 };
 

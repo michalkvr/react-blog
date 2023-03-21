@@ -1,0 +1,36 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.button {
+  @include rounded-sm;
+  @include hover;
+  border: none;
+  width: fit-content;
+  height: fit-content;
+}
+
+.small {
+  @include text-2;
+  padding: 0.6rem 1.2rem;
+}
+
+// .medium {
+
+// }
+
+// .danger {
+
+// }
+
+// .warning {
+
+// }
+
+// .info {
+
+// }
+
+.primary {
+  background-color: $color-primary;
+  color: $color-secondary;
+}

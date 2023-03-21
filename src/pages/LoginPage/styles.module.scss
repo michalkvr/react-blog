@@ -1,0 +1,32 @@
+@import '~/styles/variables';
+@import '~/styles/mixins';
+
+.login {
+  @include container;
+  @include shadow;
+  @include rounded;
+  width: 36.8rem;
+  margin-top: 6rem;
+}
+
+.wrapper {
+  padding: 3.2rem;
+}
+
+.title {
+  font-size: 2.8rem;
+  font-weight: bold;
+}
+
+.form {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-top: 2.4rem;
+}
+
+.button {
+  margin-top: 1.6rem; // on top of the flex gap
+}

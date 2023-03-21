@@ -63,6 +63,9 @@
       }
     ],
     "no-param-reassign": 0,
-    "no-plusplus": "off"
+    "no-plusplus": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off",
+    "react/button-has-type": "off"
   }
 }

@@ -1,0 +1,32 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+.field {
+  @include rounded-sm;
+  border: $border-line;
+  color: $color-text-primary;
+  width: 100%;
+}
+
+.small {
+  @include text-1;    
+  padding: 0.6rem 1.2rem;
+}
+
+.large {
+  font-size: 2rem;
+  line-height: 3rem;
+  padding: 0.8rem 1.6rem;
+}

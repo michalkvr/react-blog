@@ -12,6 +12,10 @@ main {
   @include container;
 }
 
+a, button {
+  cursor: pointer;
+}
+
 section {
   margin: 6rem 0;
 }

@@ -4,6 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import UserType from '~/types/UserType';
 import TokenType from '~/types/TokenType';
 import routes from '~/constants/routes';
+import Input from '~/features/ui/components/Input';
+import Button from '~/features/ui/components/Button';
+
+import styles from './styles.module.scss';
 
 type LoginPageProps = {
   user: UserType;
@@ -27,23 +31,31 @@ const LoginPage = ({ user, setUser }: LoginPageProps) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <input
-        type="username"
-        required
-        value={username}
-        placeholder="Username"
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        required
-        value={password}
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit">Log in</button>
-    </form>
+    <section className={styles.login}>
+      <div className={styles.wrapper}>
+        <h1 className={styles.title}>Log in</h1>
+        <form className={styles.form} onSubmit={onSubmit}>
+          <Input
+            id="username"
+            label="Username"
+            required
+            value={username}
+            placeholder="johndoe"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <Input
+            id="password"
+            label="Password"
+            type="password"
+            required
+            value={password}
+            placeholder="••••••••••"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button type="submit">Log in</Button>
+        </form>
+      </div>
+    </section>
   );
 };
 

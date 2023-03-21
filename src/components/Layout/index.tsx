@@ -10,7 +10,9 @@ const Layout = ({ user }: LayoutProps) => {
   return (
     <>
       <Header user={user} />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       {/* <Footer /> */}
     </>
   );

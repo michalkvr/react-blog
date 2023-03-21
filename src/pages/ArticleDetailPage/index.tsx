@@ -25,19 +25,19 @@ const ArticleDetailPage = () => {
   }, []);
 
   return (
-    <main>
-      <section>
-        {article.perex}
-        <br />
-        <a
-          href="https://github.com/michalkvr/react-blog-legacy/blob/dev/src/pages/article/article.component.tsx"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Code I wrote for this app few months ago
-        </a>
-      </section>
-    </main>
+    <section>
+      <h1>Example fetch</h1>
+      {/* Placholder for json fetch preview */}
+      <pre>{JSON.stringify(article, undefined, 2)}</pre>
+      <br />
+      <a
+        href="https://github.com/michalkvr/react-blog-legacy/blob/dev/src/pages/article/article.component.tsx"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Code I wrote for this app few months ago
+      </a>
+    </section>
   );
 };
 
