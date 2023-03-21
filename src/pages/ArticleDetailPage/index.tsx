@@ -26,7 +26,9 @@ const ArticleDetailPage = () => {
 
   return (
     <section>
-      {article.perex}
+      <h1>Example fetch</h1>
+      {/* Placholder for json fetch preview */}
+      <pre>{JSON.stringify(article, undefined, 2)}</pre>
       <br />
       <a
         href="https://github.com/michalkvr/react-blog-legacy/blob/dev/src/pages/article/article.component.tsx"
