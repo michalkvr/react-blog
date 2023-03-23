@@ -12,6 +12,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@uiw/react-md-editor": "^3.20.5",
     "axios": "^1.3.4",
     "javascript-time-ago": "^2.5.9",
     "react": "^18.2.0",

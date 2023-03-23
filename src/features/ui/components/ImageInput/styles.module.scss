@@ -1,0 +1,27 @@
+@import '~/styles/variables';
+@import '~/styles/mixins';
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+
+  input {
+    width: 100%;
+  }
+}
+
+.field {
+  width: 100%;
+}
+
+.preview {
+  max-height: 7.4rem;
+  width: fit-content;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+}

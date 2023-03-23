@@ -15,8 +15,11 @@ export const initAxios = () => {
       if (error.response?.status === 401) {
         showAlert('You need to login first', 'error');
         window.location.href = '/login';
+      } else if (error.response?.status === 404) {
+        showAlert('Not found', 'error');
+      } else {
+        showAlert(error.message, 'error');
       }
-      return Promise.reject(error);
     }
   );
 };

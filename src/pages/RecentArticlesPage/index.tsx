@@ -8,10 +8,14 @@ import styles from './styles.module.scss';
 const RecentArticlesPage = () => {
   const [articles, setArticles] = useState<ArticleType[]>([]);
 
-  useEffect(() => {
+  const fetchArticles = () => {
     axios.get<ArticleType[]>('articles').then((response) => {
       setArticles(response.data);
     });
+  };
+
+  useEffect(() => {
+    fetchArticles();
   }, []);
 
   return (

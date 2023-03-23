@@ -50,7 +50,7 @@ const App = () => {
           element={<LogoutPage setUser={setUser} />}
         />
         <Route path={routes.about} element={<AboutPage />} />
-        <Route path={routes.articleForm} element={<ArticleFormPage />} />
+        <Route path={routes.createArticle} element={<ArticleFormPage />} />
         <Route path={routes.myArticles} element={<MyArticlesPage />} />
         <Route path={routes.articleDetail} element={<ArticleDetailPage />} />
       </Route>
