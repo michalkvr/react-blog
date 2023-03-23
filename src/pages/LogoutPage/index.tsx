@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { initialUserValues } from '~/App';
 import routes from '~/constants/routes';
 import UserType from '~/types/UserType';
+import { showAlert } from '~/utils/swal';
 
 type LogoutPageProps = {
   setUser: Dispatch<SetStateAction<UserType>>;
@@ -17,6 +18,7 @@ const LogoutPage = ({ setUser }: LogoutPageProps) => {
 
     localStorage.removeItem('access_token');
     setUser({ ...initialUserValues });
+    showAlert('Logged out successfully!', 'success');
     navigate(routes.login);
   }, []);
 
