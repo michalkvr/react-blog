@@ -2,7 +2,7 @@ import Swal from 'sweetalert2';
 
 const showAlert = (message: string, type: 'success' | 'error') => {
   Swal.fire({
-    position: 'bottom-end',
+    position: 'top',
     icon: type,
     title: message,
     showConfirmButton: false,
@@ -11,4 +11,4 @@ const showAlert = (message: string, type: 'success' | 'error') => {
   });
 };
 
-export default { showAlert };
+export default showAlert;

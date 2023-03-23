@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { initialUserValues } from '~/App';
 import routes from '~/constants/routes';
 import UserType from '~/types/UserType';
-import { showAlert } from '~/utils/swal';
+import showAlert from '~/utils/swal';
 
 type LogoutPageProps = {
   setUser: Dispatch<SetStateAction<UserType>>;

@@ -8,7 +8,8 @@ import Input from '~/features/ui/components/Input';
 import Button from '~/features/ui/components/Button';
 
 import styles from './styles.module.scss';
-import { showAlert } from '~/utils/swal';
+import { addTokenToHeader } from '~/utils/api';
+import showAlert from '~/utils/swal';
 
 type LoginPageProps = {
   user: UserType;
@@ -25,7 +26,7 @@ const LoginPage = ({ user, setUser }: LoginPageProps) => {
     e.preventDefault();
     axios.post<TokenType>('login', { username, password }).then((response) => {
       localStorage.setItem('access_token', response.data.access_token);
-      axios.defaults.headers.common.Authorization = response.data.access_token;
+      addTokenToHeader(response.data.access_token);
       setUser({ ...user, loggedIn: true });
       showAlert('Logged in successfully!', 'success');
       navigate(routes.myArticles);
