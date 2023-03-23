@@ -20,12 +20,12 @@ export const initialUserValues = {
   loggedIn: false,
 };
 
+initAxios();
+
 const App = () => {
   const [user, setUser] = useState<UserType>(initialUserValues);
 
   useEffect(() => {
-    initAxios();
-
     const token = localStorage.getItem('access_token');
     if (token) {
       // some logic to get name etc.

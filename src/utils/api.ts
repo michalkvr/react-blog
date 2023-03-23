@@ -27,3 +27,7 @@ export const initAxios = () => {
 export const addTokenToHeader = (token: string) => {
   axios.defaults.headers.common.Authorization = token;
 };
+
+export const getImageUrl = (imageId: string) => {
+  return `${import.meta.env.VITE_SERVER_API}/images/${imageId}`;
+};

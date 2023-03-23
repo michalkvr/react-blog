@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 
 import cat from '~/assets/cat.png';
 
-type ArticleTileProps = {
+type TileProps = {
   article: ArticleType;
 };
 
@@ -17,9 +17,9 @@ type ArticleTileProps = {
 const name = 'Elisabeth Strain';
 const comments = [];
 
-const ArticleTile = ({ article }: ArticleTileProps) => {
+const Tile = ({ article }: TileProps) => {
   return (
-    <article className={styles.articleTile}>
+    <article className={styles.Tile}>
       <div className={styles.wrapper}>
         <img className={styles.img} src={cat} alt="Cat pls" />
         <div className={styles.content}>
@@ -45,4 +45,4 @@ const ArticleTile = ({ article }: ArticleTileProps) => {
   );
 };
 
-export default ArticleTile;
+export default Tile;

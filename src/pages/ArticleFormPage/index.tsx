@@ -30,7 +30,7 @@ const ArticleFormPage = () => {
 
   const fetchArticle = async () => {
     axios
-      .get<ArticleDetailType>(`articles/${slug}`)
+      .get<ArticleDetailType>(`/articles/${slug}`)
       .then((response: AxiosResponse) => {
         setArticle(response.data);
       });
@@ -46,7 +46,7 @@ const ArticleFormPage = () => {
     // });
 
     // Should be error checked, only 401 and 404 is handled in axios middleware
-    axios.post<ArticleDetailType>(`articles`, article).then(() => {
+    axios.post<ArticleDetailType>(`/articles`, article).then(() => {
       showAlert('Article successfully created', 'success');
       navigate(`${routes.articles}/${slugify(article.title)}`);
     });

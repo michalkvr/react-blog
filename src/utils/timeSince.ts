@@ -4,7 +4,7 @@ import en from 'javascript-time-ago/locale/en';
 const LOCALE = 'en-US';
 
 const timeSince = (date: Date) => {
-  TimeAgoLib.addDefaultLocale(en);
+  TimeAgoLib.addLocale(en);
   const timeAgoFormatter = new TimeAgoLib(LOCALE);
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);

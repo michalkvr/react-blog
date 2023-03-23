@@ -24,7 +24,7 @@ const LoginPage = ({ user, setUser }: LoginPageProps) => {
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    axios.post<TokenType>('login', { username, password }).then((response) => {
+    axios.post<TokenType>('/login', { username, password }).then((response) => {
       localStorage.setItem('access_token', response.data.access_token);
       addTokenToHeader(response.data.access_token);
       setUser({ ...user, loggedIn: true });
