@@ -9,8 +9,8 @@ const RecentArticlesPage = () => {
   const [articles, setArticles] = useState<ArticleType[]>([]);
 
   const fetchArticles = () => {
-    axios.get<ArticleType[]>('articles').then((response) => {
-      setArticles(response.data);
+    axios.get<{ items: ArticleType[] }>('/articles').then((response) => {
+      setArticles(response.data.items);
     });
   };
 

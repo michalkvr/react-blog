@@ -1,8 +1,8 @@
 export default {
   about: '/about',
   articles: '/articles',
-  articleDetail: '/articles/:slug',
-  editArticle: '/articles/:slug/form',
+  articleDetail: '/articles/:id',
+  editArticle: '/articles/:id/form',
   createArticle: '/new-article',
   home: '/recent-articles',
   login: '/login',

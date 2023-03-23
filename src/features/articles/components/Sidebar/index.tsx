@@ -1,5 +1,4 @@
 import ArticleType from '~/types/ArticleType';
-import slugify from '~/utils/slugify';
 
 import styles from './styles.module.scss';
 
@@ -16,7 +15,7 @@ const ArticleSidebar = ({ articles }: ArticleSidebarProps) => {
           {articles.map((article) => (
             <a
               key={article.articleId}
-              href={`/articles/${slugify(article.title)}`}
+              href={`/articles/${article.articleId}`}
               className={styles.item}
             >
               <h3 className={styles.article}>{article.title}</h3>

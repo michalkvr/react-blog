@@ -1,4 +1,3 @@
-import slugify from '~/utils/slugify';
 import ArticleType from '~/types/ArticleType';
 
 import styles from './styles.module.scss';
@@ -23,18 +22,15 @@ const Tile = ({ article }: TileProps) => {
       <div className={styles.wrapper}>
         <img className={styles.img} src={cat} alt="Cat pls" />
         <div className={styles.content}>
-          <h2 className={styles.title}>{article.title}</h2>
+          <h2 className={styles.title}>{article.title ?? ''}</h2>
           <div className={styles.info}>
             <span>{name}</span>
             <span className={styles.dot} />
             <span>{new Date(article.lastUpdatedAt).toLocaleDateString()}</span>
           </div>
-          <p className={styles.perex}>{article.perex}</p>
+          <p className={styles.perex}>{article.perex ?? ''}</p>
           <div className={styles.actions}>
-            <a
-              className={styles.link}
-              href={`articles/${slugify(article.title)}`}
-            >
+            <a className={styles.link} href={`articles/${article.articleId}`}>
               Read whole article
             </a>
             <div className={styles.comments}>{comments.length} comments</div>

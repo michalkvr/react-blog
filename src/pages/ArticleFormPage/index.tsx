@@ -9,28 +9,22 @@ import ArticleDetailType from '~/types/ArticleDetailType';
 
 import styles from './styles.module.scss';
 import routes from '~/constants/routes';
-import slugify from '~/utils/slugify';
 import showAlert from '~/utils/swal';
 
 const initialValues: ArticleDetailType = {
-  articleId: '',
   title: '',
   perex: '',
-  imageId: '',
-  createdAt: '',
-  lastUpdatedAt: '',
   content: '',
-  comments: [],
 };
 
 const ArticleFormPage = () => {
-  const { slug } = useParams();
+  const { id } = useParams();
   const [article, setArticle] = useState<ArticleDetailType>(initialValues);
   const navigate = useNavigate();
 
   const fetchArticle = async () => {
     axios
-      .get<ArticleDetailType>(`/articles/${slug}`)
+      .get<ArticleDetailType>(`/articles/${id}`)
       .then((response: AxiosResponse) => {
         setArticle(response.data);
       });
@@ -46,10 +40,18 @@ const ArticleFormPage = () => {
     // });
 
     // Should be error checked, only 401 and 404 is handled in axios middleware
-    axios.post<ArticleDetailType>(`/articles`, article).then(() => {
-      showAlert('Article successfully created', 'success');
-      navigate(`${routes.articles}/${slugify(article.title)}`);
-    });
+
+    axios
+      .post<ArticleDetailType>(`/articles`, JSON.stringify(article), {
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      })
+      .then((response) => {
+        showAlert('Article successfully created', 'success');
+        navigate(`${routes.articles}/${response.data.articleId}`);
+      });
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -68,7 +70,7 @@ const ArticleFormPage = () => {
   };
 
   useEffect(() => {
-    if (slug) fetchArticle();
+    if (id) fetchArticle();
   }, []);
 
   return (
@@ -77,7 +79,7 @@ const ArticleFormPage = () => {
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.header}>
             <h1 className={styles.title}>
-              {slug ? 'Edit article' : 'Create new article'}
+              {id ? 'Edit article' : 'Create new article'}
             </h1>
             <Button type="submit">Publish Article</Button>
           </div>

@@ -24,17 +24,17 @@ const ArticleDetailPage = () => {
   const [article, setArticle] = useState<ArticleDetailType>(intialValues);
   const [articles, setArticles] = useState<ArticleType[]>([]);
 
-  const { slug } = useParams();
+  const { id } = useParams();
 
   const fetchArticle = () => {
-    axios.get<ArticleDetailType>(`/articles/${slug}`).then((response) => {
+    axios.get<ArticleDetailType>(`/articles/${id}`).then((response) => {
       setArticle(response.data);
     });
   };
 
   const fetchArticles = () => {
-    axios.get<ArticleType[]>(`/articles`).then((response) => {
-      setArticles(response.data);
+    axios.get<{ items: ArticleType[] }>(`/articles`).then((response) => {
+      setArticles(response.data.items);
     });
   };
 
@@ -53,17 +53,24 @@ const ArticleDetailPage = () => {
             <span>Michal Kovar</span>
 
             <span className={styles.dot} />
-            <span>{new Date(article.lastUpdatedAt).toLocaleDateString()}</span>
+            <span>
+              {article.lastUpdatedAt &&
+                new Date(article.lastUpdatedAt).toLocaleDateString()}
+            </span>
           </div>
           <img
             className="img"
-            src={article.imageId ?? getImageUrl(article.imageId)}
+            src={article.imageId && getImageUrl(article.imageId)}
             alt=""
           />
           <p>{article.content}</p>
-          <ListOfComments comments={article.comments} />
+          <ListOfComments comments={article.comments ?? []} />
         </div>
-        <ArticleSidebar articles={articles} />
+        <ArticleSidebar
+          articles={articles.filter(
+            (item) => article.articleId !== item.articleId
+          )}
+        />
       </div>
     </section>
   );

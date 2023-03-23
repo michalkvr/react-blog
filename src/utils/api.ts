@@ -17,6 +17,8 @@ export const initAxios = () => {
         window.location.href = '/login';
       } else if (error.response?.status === 404) {
         showAlert('Not found', 'error');
+      } else if (error.response?.status === 400) {
+        showAlert('Wrong credentials, please try again...', 'error');
       } else {
         showAlert(error.message, 'error');
       }
