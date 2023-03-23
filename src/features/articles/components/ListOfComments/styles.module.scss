@@ -1,0 +1,27 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.wrapper {
+  border-top: $border-line;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  margin-top: 2.4rem;
+  padding-top: 2.4rem;
+}
+
+.title {
+  @include title-2;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  gap: 2.7rem;
+}
+
+.avatar {
+  height: 4.4rem;
+  margin: auto;
+  width: 4.4rem;
+}

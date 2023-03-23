@@ -2,6 +2,12 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ArticleDetailType from '~/types/ArticleDetailType';
+import ListOfComments from '~/features/articles/components/ListOfComments';
+import { getImageUrl } from '~/utils/api';
+
+import styles from './styles.module.scss';
+import ArticleType from '~/types/ArticleType';
+import ArticleSidebar from '~/features/articles/components/Sidebar';
 
 const intialValues: ArticleDetailType = {
   articleId: '',
@@ -16,27 +22,56 @@ const intialValues: ArticleDetailType = {
 
 const ArticleDetailPage = () => {
   const [article, setArticle] = useState<ArticleDetailType>(intialValues);
-  const { slug } = useParams();
+  const [articles, setArticles] = useState<ArticleType[]>([]);
 
-  useEffect(() => {
-    axios.get<ArticleDetailType>(`articles/${slug}`).then((response) => {
+  const { id } = useParams();
+
+  const fetchArticle = () => {
+    axios.get<ArticleDetailType>(`/articles/${id}`).then((response) => {
       setArticle(response.data);
     });
+  };
+
+  const fetchArticles = () => {
+    axios.get<{ items: ArticleType[] }>(`/articles`).then((response) => {
+      setArticles(response.data.items);
+    });
+  };
+
+  useEffect(() => {
+    fetchArticle();
+    fetchArticles();
   }, []);
 
   return (
-    <section>
-      <h1>Example fetch</h1>
-      {/* Placholder for json fetch preview */}
-      <pre>{JSON.stringify(article, undefined, 2)}</pre>
-      <br />
-      <a
-        href="https://github.com/michalkvr/react-blog-legacy/blob/dev/src/pages/article/article.component.tsx"
-        target="_blank"
-        rel="noreferrer"
-      >
-        Code I wrote for this app few months ago
-      </a>
+    <section className="article">
+      <div className={styles.wrapper}>
+        <div className={styles.content}>
+          <h1 className={styles.title}>{article.title}</h1>
+          <div className={styles.info}>
+            {/* Author is not passed in response */}
+            <span>Michal Kovar</span>
+
+            <span className={styles.dot} />
+            <span>
+              {article.lastUpdatedAt &&
+                new Date(article.lastUpdatedAt).toLocaleDateString()}
+            </span>
+          </div>
+          <img
+            className="img"
+            src={article.imageId && getImageUrl(article.imageId)}
+            alt=""
+          />
+          <p>{article.content}</p>
+          <ListOfComments comments={article.comments ?? []} />
+        </div>
+        <ArticleSidebar
+          articles={articles.filter(
+            (item) => article.articleId !== item.articleId
+          )}
+        />
+      </div>
     </section>
   );
 };

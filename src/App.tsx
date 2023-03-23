@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Layout from './components/Layout';
 import routes from './constants/routes';
@@ -13,6 +12,7 @@ import './styles/app.scss';
 import UserType from './types/UserType';
 import LoginPage from './pages/LoginPage';
 import LogoutPage from './pages/LogoutPage';
+import { initAxios } from './utils/api';
 
 export const initialUserValues = {
   firstName: '',
@@ -20,11 +20,7 @@ export const initialUserValues = {
   loggedIn: false,
 };
 
-// Axios setup - should be moved to a separate file
-axios.defaults.baseURL = import.meta.env.VITE_SERVER_API;
-axios.defaults.headers.common['X-API-KEY'] = import.meta.env.VITE_X_API_KEY;
-axios.defaults.headers.common.Authorization =
-  localStorage.getItem('access_token');
+initAxios();
 
 const App = () => {
   const [user, setUser] = useState<UserType>(initialUserValues);
@@ -32,7 +28,7 @@ const App = () => {
   useEffect(() => {
     const token = localStorage.getItem('access_token');
     if (token) {
-      // some logic to get name
+      // some logic to get name etc.
       setUser({ ...user, loggedIn: true });
     }
   }, []);
@@ -54,7 +50,7 @@ const App = () => {
           element={<LogoutPage setUser={setUser} />}
         />
         <Route path={routes.about} element={<AboutPage />} />
-        <Route path={routes.articleForm} element={<ArticleFormPage />} />
+        <Route path={routes.createArticle} element={<ArticleFormPage />} />
         <Route path={routes.myArticles} element={<MyArticlesPage />} />
         <Route path={routes.articleDetail} element={<ArticleDetailPage />} />
       </Route>

@@ -1,7 +1,9 @@
 export default {
   about: '/about',
-  articleDetail: '/articles/:slug',
-  articleForm: '/articles/form/:slug',
+  articles: '/articles',
+  articleDetail: '/articles/:id',
+  editArticle: '/articles/:id/form',
+  createArticle: '/new-article',
   home: '/recent-articles',
   login: '/login',
   logout: '/logout',

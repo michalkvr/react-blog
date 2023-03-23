@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import ArticleTile from '~/features/articles/components/ArticleTile';
+import Tile from '~/features/articles/components/Tile';
 import ArticleType from '~/types/ArticleType';
 
 import styles from './styles.module.scss';
@@ -8,10 +8,14 @@ import styles from './styles.module.scss';
 const RecentArticlesPage = () => {
   const [articles, setArticles] = useState<ArticleType[]>([]);
 
-  useEffect(() => {
-    axios.get<ArticleType[]>('articles').then((response) => {
-      setArticles(response.data);
+  const fetchArticles = () => {
+    axios.get<{ items: ArticleType[] }>('/articles').then((response) => {
+      setArticles(response.data.items);
     });
+  };
+
+  useEffect(() => {
+    fetchArticles();
   }, []);
 
   return (
@@ -19,7 +23,7 @@ const RecentArticlesPage = () => {
       <h1 className={styles.title}>Recent articles</h1>
       <div className={styles.wrapper}>
         {articles.map((article) => (
-          <ArticleTile key={article.articleId} article={article} />
+          <Tile key={article.articleId} article={article} />
         ))}
       </div>
     </section>

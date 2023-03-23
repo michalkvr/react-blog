@@ -18,9 +18,15 @@
 
 // }
 
-// .danger {
+.textDanger {
+  background-color: $color-secondary;
+  color: $color-danger;
+}
 
-// }
+.textPrimary {
+  background-color: $color-secondary;
+  color: $color-primary;
+}
 
 // .warning {
 

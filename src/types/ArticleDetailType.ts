@@ -1,14 +1,14 @@
 import Comment from './CommentType';
 
 type ArticleDetailType = {
-  articleId: string;
+  articleId?: string;
   title: string;
   perex: string;
-  imageId: string;
-  createdAt: string;
-  lastUpdatedAt: string;
+  imageId?: string;
   content: string;
-  comments: Comment[];
+  createdAt?: string;
+  lastUpdatedAt?: string;
+  comments?: Comment[];
 };
 
 export default ArticleDetailType;

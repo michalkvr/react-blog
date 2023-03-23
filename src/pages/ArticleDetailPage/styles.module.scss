@@ -1,0 +1,38 @@
+@import '~/styles/variables';
+@import '~/styles/mixins';
+
+.wrapper {
+  @include container;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.title {
+  @include title-1;
+}
+
+.info {
+  color: $color-secondary;
+  display: flex;
+  flex-direction: row;
+  gap: 1.2rem;
+}
+
+.dot {
+  background-color: $color-secondary;
+  border-radius: 50%;
+  display: inline-block;
+  height: 0.4rem;
+  margin: auto 0;
+  width: 0.4rem;
+}
+
+.img {
+  width: 100%;
+}

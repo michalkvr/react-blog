@@ -1,0 +1,49 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 2.8rem;
+}
+
+.avatar {
+  width: 4.4rem;
+  height: 4.4rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.author {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  font-weight: bold;
+}
+
+.published {
+  @include text-2;
+  color: $color-text-secondary;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.votes {
+  display: flex;
+  flex-direction: row;
+  gap: 0.8rem;
+}
+
+.vote {
+  @include hover;
+  background: none;
+  border: none;
+}
