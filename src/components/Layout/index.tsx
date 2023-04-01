@@ -1,15 +1,10 @@
 import { Outlet } from 'react-router-dom';
 import Header from '../Header';
-import UserType from '~/types/UserType';
 
-type LayoutProps = {
-  user: UserType;
-};
-
-const Layout = ({ user }: LayoutProps) => {
+const Layout = () => {
   return (
     <>
-      <Header user={user} />
+      <Header />
       <main>
         <Outlet />
       </main>

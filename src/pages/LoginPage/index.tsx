@@ -1,37 +1,35 @@
-import { Dispatch, FormEvent, SetStateAction, useState } from 'react';
-import axios from 'axios';
+import { FormEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import UserType from '~/types/UserType';
-import TokenType from '~/types/TokenType';
 import routes from '~/constants/routes';
 import Input from '~/features/ui/components/Input';
 import Button from '~/features/ui/components/Button';
+import { useAppDispatch, useAppSelector } from '~/hooks';
+import { logIn, selectUser } from '~/features/user/userSlice';
+import CredentialsType from '~/types/CredentialsType';
 
 import styles from './styles.module.scss';
-import { addTokenToHeader } from '~/utils/api';
-import showAlert from '~/utils/swal';
 
-type LoginPageProps = {
-  user: UserType;
-  setUser: Dispatch<SetStateAction<UserType>>;
+const initialValues: CredentialsType = {
+  username: '',
+  password: '',
 };
 
-const LoginPage = ({ user, setUser }: LoginPageProps) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+const LoginPage = () => {
+  const [credentials, setCredentials] = useState(initialValues);
 
+  const user = useAppSelector(selectUser);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    axios.post<TokenType>('/login', { username, password }).then((response) => {
-      localStorage.setItem('access_token', response.data.access_token);
-      addTokenToHeader(response.data.access_token);
-      setUser({ ...user, loggedIn: true });
-      showAlert('Logged in successfully!', 'success');
-      navigate(routes.myArticles);
-    });
+    dispatch(logIn(credentials));
+    setCredentials(initialValues);
   };
+
+  useEffect(() => {
+    if (user.loggedIn) navigate(routes.home);
+  }, [user]);
 
   return (
     <section className={styles.login}>
@@ -42,18 +40,22 @@ const LoginPage = ({ user, setUser }: LoginPageProps) => {
             id="username"
             label="Username"
             required
-            value={username}
+            value={credentials.username}
             placeholder="johndoe"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) =>
+              setCredentials({ ...credentials, username: e.target.value })
+            }
           />
           <Input
             id="password"
             label="Password"
             type="password"
             required
-            value={password}
+            value={credentials.password}
             placeholder="••••••••••"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) =>
+              setCredentials({ ...credentials, password: e.target.value })
+            }
           />
           <Button type="submit">Log in</Button>
         </form>

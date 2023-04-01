@@ -4,7 +4,8 @@ import routes from '~/constants/routes';
 import logo from '~/assets/logo.webp';
 
 import styles from './styles.module.scss';
-import UserType from '~/types/UserType';
+import { useAppDispatch, useAppSelector } from '~/hooks';
+import { logOut, selectUser } from '~/features/user/userSlice';
 
 const publicNavItems = [
   {
@@ -26,17 +27,12 @@ const userNavItems = [
     label: 'Create Article',
     href: routes.createArticle,
   },
-  {
-    label: 'Sign out →',
-    href: routes.logout,
-  },
 ];
 
-type HeaderProps = {
-  user: UserType;
-};
+const Header = () => {
+  const dispatch = useAppDispatch();
+  const user = useAppSelector(selectUser);
 
-const Header = ({ user }: HeaderProps) => {
   return (
     <header className={styles.header}>
       <div className={styles.wrapper}>
@@ -69,6 +65,15 @@ const Header = ({ user }: HeaderProps) => {
                 {item.label}
               </NavLink>
             ))}
+            <NavLink
+              to={routes.login}
+              onClick={() => {
+                dispatch(logOut());
+              }}
+              className={styles.link}
+            >
+              Log out →
+            </NavLink>
           </nav>
         ) : (
           <NavLink className={styles.nav} key={routes.login} to={routes.login}>

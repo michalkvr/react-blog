@@ -14,7 +14,6 @@ export const initAxios = () => {
     (error: AxiosError) => {
       if (error.response?.status === 401) {
         showAlert('You need to login first', 'error');
-        window.location.href = '/login';
       } else if (error.response?.status === 404) {
         showAlert('Not found', 'error');
       } else if (error.response?.status === 400) {
