@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Layout from './components/Layout';
 import routes from './constants/routes';
 import AboutPage from './pages/AboutPage';
@@ -9,46 +9,31 @@ import MyArticlesPage from './pages/MyArticlesPage';
 import RecentArticlesPage from './pages/RecentArticlesPage';
 
 import './styles/app.scss';
-import UserType from './types/UserType';
 import LoginPage from './pages/LoginPage';
-import LogoutPage from './pages/LogoutPage';
 import { initAxios } from './utils/api';
-
-export const initialUserValues = {
-  firstName: '',
-  lastName: '',
-  loggedIn: false,
-};
+import { useAppDispatch } from './hooks';
+import { setUser, UserSliceType } from './features/user/userSlice';
+import storage from './utils/storage';
 
 initAxios();
 
 const App = () => {
-  const [user, setUser] = useState<UserType>(initialUserValues);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const token = localStorage.getItem('access_token');
-    if (token) {
-      // some logic to get name etc.
-      setUser({ ...user, loggedIn: true });
-    }
+    const user = storage.retrieveUser() as UserSliceType;
+    if (user) dispatch(setUser(user));
   }, []);
 
   return (
     <Routes>
-      <Route path="/" element={<Layout user={user} />}>
+      <Route path="/" element={<Layout />}>
         <Route
           index
           path={routes.recentArticles}
           element={<RecentArticlesPage />}
         />
-        <Route
-          path={routes.login}
-          element={<LoginPage user={user} setUser={setUser} />}
-        />
-        <Route
-          path={routes.logout}
-          element={<LogoutPage setUser={setUser} />}
-        />
+        <Route path={routes.login} element={<LoginPage />} />
         <Route path={routes.about} element={<AboutPage />} />
         <Route path={routes.createArticle} element={<ArticleFormPage />} />
         <Route path={routes.myArticles} element={<MyArticlesPage />} />

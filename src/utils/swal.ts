@@ -2,11 +2,11 @@ import Swal from 'sweetalert2';
 
 const showAlert = (message: string, type: 'success' | 'error') => {
   Swal.fire({
-    position: 'top',
+    position: 'bottom',
     icon: type,
     title: message,
     showConfirmButton: false,
-    timer: 3000,
+    timer: 2500,
     backdrop: false,
   });
 };

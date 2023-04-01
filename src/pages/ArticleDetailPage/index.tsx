@@ -1,46 +1,32 @@
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import ArticleDetailType from '~/types/ArticleDetailType';
+import { useEffect } from 'react';
+import MDEditor from '@uiw/react-md-editor';
 import ListOfComments from '~/features/articles/components/ListOfComments';
 import { getImageUrl } from '~/utils/api';
+import ArticleSidebar from '~/features/articles/components/Sidebar';
+import {
+  fetchArticleById,
+  fetchArticles,
+  selectArticles,
+  selectCurrentArticle,
+} from '~/features/articles/articlesSlice';
+import { useAppSelector, useAppDispatch } from '~/hooks';
 
 import styles from './styles.module.scss';
-import ArticleType from '~/types/ArticleType';
-import ArticleSidebar from '~/features/articles/components/Sidebar';
 
-const intialValues: ArticleDetailType = {
-  articleId: '',
-  title: '',
-  perex: '',
-  imageId: '',
-  createdAt: '',
-  lastUpdatedAt: '',
-  content: '',
-  comments: [],
-};
+const AUTHOR = 'Elisabeth Strain';
 
 const ArticleDetailPage = () => {
-  const [article, setArticle] = useState<ArticleDetailType>(intialValues);
-  const [articles, setArticles] = useState<ArticleType[]>([]);
-
   const { id } = useParams();
-
-  const fetchArticle = () => {
-    axios.get<ArticleDetailType>(`/articles/${id}`).then((response) => {
-      setArticle(response.data);
-    });
-  };
-
-  const fetchArticles = () => {
-    axios.get<{ items: ArticleType[] }>(`/articles`).then((response) => {
-      setArticles(response.data.items);
-    });
-  };
+  const article = useAppSelector(selectCurrentArticle);
+  const articles = useAppSelector(selectArticles);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    fetchArticle();
-    fetchArticles();
+    if (id) {
+      dispatch(fetchArticleById(id));
+    }
+    dispatch(fetchArticles());
   }, []);
 
   return (
@@ -49,8 +35,8 @@ const ArticleDetailPage = () => {
         <div className={styles.content}>
           <h1 className={styles.title}>{article.title}</h1>
           <div className={styles.info}>
-            {/* Author is not passed in response */}
-            <span>Michal Kovar</span>
+            {/* Author is not passed in response - so I hardcoded it for the demo */}
+            <span>{AUTHOR}</span>
 
             <span className={styles.dot} />
             <span>
@@ -63,7 +49,9 @@ const ArticleDetailPage = () => {
             src={article.imageId && getImageUrl(article.imageId)}
             alt=""
           />
-          <p>{article.content}</p>
+          <p data-color-mode="light">
+            <MDEditor.Markdown source={article.content} />
+          </p>
           <ListOfComments comments={article.comments ?? []} />
         </div>
         <ArticleSidebar

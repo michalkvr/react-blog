@@ -1,21 +1,19 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
 import Tile from '~/features/articles/components/Tile';
-import ArticleType from '~/types/ArticleType';
 
 import styles from './styles.module.scss';
+import { useAppDispatch, useAppSelector } from '~/hooks';
+import {
+  fetchArticles,
+  selectArticles,
+} from '~/features/articles/articlesSlice';
 
 const RecentArticlesPage = () => {
-  const [articles, setArticles] = useState<ArticleType[]>([]);
-
-  const fetchArticles = () => {
-    axios.get<{ items: ArticleType[] }>('/articles').then((response) => {
-      setArticles(response.data.items);
-    });
-  };
+  const articles = useAppSelector(selectArticles);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    fetchArticles();
+    dispatch(fetchArticles());
   }, []);
 
   return (
