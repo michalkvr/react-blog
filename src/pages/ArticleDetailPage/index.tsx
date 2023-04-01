@@ -1,9 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import MDEditor from '@uiw/react-md-editor';
 import ListOfComments from '~/features/articles/components/ListOfComments';
 import { getImageUrl } from '~/utils/api';
-
-import styles from './styles.module.scss';
 import ArticleSidebar from '~/features/articles/components/Sidebar';
 import {
   fetchArticleById,
@@ -12,6 +11,8 @@ import {
   selectCurrentArticle,
 } from '~/features/articles/articlesSlice';
 import { useAppSelector, useAppDispatch } from '~/hooks';
+
+import styles from './styles.module.scss';
 
 const AUTHOR = 'Elisabeth Strain';
 
@@ -48,7 +49,9 @@ const ArticleDetailPage = () => {
             src={article.imageId && getImageUrl(article.imageId)}
             alt=""
           />
-          <p>{article.content}</p>
+          <p data-color-mode="light">
+            <MDEditor.Markdown source={article.content} />
+          </p>
           <ListOfComments comments={article.comments ?? []} />
         </div>
         <ArticleSidebar
