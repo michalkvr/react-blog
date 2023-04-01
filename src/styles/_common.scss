@@ -13,7 +13,10 @@ main {
 }
 
 a, button {
+  @include text-1;
   cursor: pointer;
+  border: none;
+  background: none;
 }
 
 section {
