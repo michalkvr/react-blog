@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import MDEditor from '@uiw/react-md-editor';
 import ArticleDetailType from '~/types/ArticleDetailType';
 import ListOfComments from '~/features/articles/components/ListOfComments';
 import { getImageUrl } from '~/utils/api';
@@ -63,7 +64,9 @@ const ArticleDetailPage = () => {
             src={article.imageId && getImageUrl(article.imageId)}
             alt=""
           />
-          <p>{article.content}</p>
+          <p data-color-mode="light">
+            <MDEditor.Markdown source={article.content} />
+          </p>
           <ListOfComments comments={article.comments ?? []} />
         </div>
         <ArticleSidebar
