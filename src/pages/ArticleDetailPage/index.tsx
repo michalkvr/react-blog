@@ -1,46 +1,29 @@
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import ArticleDetailType from '~/types/ArticleDetailType';
+import { useEffect } from 'react';
 import ListOfComments from '~/features/articles/components/ListOfComments';
 import { getImageUrl } from '~/utils/api';
 
 import styles from './styles.module.scss';
-import ArticleType from '~/types/ArticleType';
 import ArticleSidebar from '~/features/articles/components/Sidebar';
-
-const intialValues: ArticleDetailType = {
-  articleId: '',
-  title: '',
-  perex: '',
-  imageId: '',
-  createdAt: '',
-  lastUpdatedAt: '',
-  content: '',
-  comments: [],
-};
+import {
+  fetchArticleById,
+  fetchArticles,
+  selectArticles,
+  selectCurrentArticle,
+} from '~/features/articles/articlesSlice';
+import { useAppSelector, useAppDispatch } from '~/hooks';
 
 const ArticleDetailPage = () => {
-  const [article, setArticle] = useState<ArticleDetailType>(intialValues);
-  const [articles, setArticles] = useState<ArticleType[]>([]);
-
   const { id } = useParams();
-
-  const fetchArticle = () => {
-    axios.get<ArticleDetailType>(`/articles/${id}`).then((response) => {
-      setArticle(response.data);
-    });
-  };
-
-  const fetchArticles = () => {
-    axios.get<{ items: ArticleType[] }>(`/articles`).then((response) => {
-      setArticles(response.data.items);
-    });
-  };
+  const article = useAppSelector(selectCurrentArticle);
+  const articles = useAppSelector(selectArticles);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    fetchArticle();
-    fetchArticles();
+    if (id) {
+      dispatch(fetchArticleById(id));
+    }
+    dispatch(fetchArticles());
   }, []);
 
   return (
