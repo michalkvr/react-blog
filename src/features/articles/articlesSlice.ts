@@ -58,15 +58,11 @@ export const articlesSlice = createSlice({
         state.articles = action.payload;
       })
       // NOTE: Pending and rejected should be handled as well
-      // .addCase(fetchArticles.pending, (state, action) => {...}
-      // .addCase(fetchArticles.rejected, (state, action) => {...}
 
       .addCase(fetchArticleById.fulfilled, (state, action) => {
         state.currentArticle = action.payload;
       });
     // NOTE: Pending and rejected should be handled as well
-    // .addCase(fetchArticleById.pending, (state, action) => {...}
-    // .addCase(fetchArticleById.rejected, (state, action) => {...}
   },
 });
 

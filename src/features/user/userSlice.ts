@@ -9,7 +9,6 @@ import storage from '~/utils/storage';
 import showAlert from '~/utils/swal';
 
 export type UserSliceType = UserType & {
-  // loading: boolean;
   token: TokenType;
 };
 

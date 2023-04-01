@@ -13,6 +13,8 @@ import {
 } from '~/features/articles/articlesSlice';
 import { useAppSelector, useAppDispatch } from '~/hooks';
 
+const AUTHOR = 'Elisabeth Strain';
+
 const ArticleDetailPage = () => {
   const { id } = useParams();
   const article = useAppSelector(selectCurrentArticle);
@@ -32,8 +34,8 @@ const ArticleDetailPage = () => {
         <div className={styles.content}>
           <h1 className={styles.title}>{article.title}</h1>
           <div className={styles.info}>
-            {/* Author is not passed in response */}
-            <span>Michal Kovar</span>
+            {/* Author is not passed in response - so I hardcoded it for the demo */}
+            <span>{AUTHOR}</span>
 
             <span className={styles.dot} />
             <span>
