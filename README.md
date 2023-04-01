@@ -16,6 +16,13 @@ yarn dev
 ## Deploy
 Project is automatically deployed on https://react-blog-michalkvr.vercel.app/ with pushing to the `main` branch
 
+### Credentials for testing
+
+```
+username: michalkvr
+password: 123
+```
+
 <br>
 
 # Notes for code review
