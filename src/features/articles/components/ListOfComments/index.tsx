@@ -10,10 +10,10 @@ type ListOfCommentsProps = {
   comments: CommentType[];
 };
 
-// initialValues of the new comment = { ... }
-
 const ListOfComments = ({ comments }: ListOfCommentsProps) => {
-  // const [comment, setComment] = useState(initialValues);
+  // NOTE:
+  // I would create a new redux slice for comments and use it here
+  // If there would be a lot of code, I would probably create separate feature for comments
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
