@@ -13,4 +13,20 @@ const storage = {
   },
 };
 
+// NOTE:
+// Could and should be generic with a type parameter like example below
+
+// const storage: Storage = {
+//   persist: <T>(key: string, data: T): void => {
+//     localStorage.setItem(key, JSON.stringify(data));
+//   },
+//   retrieve: <T>(key: string): T | null => {
+//     const data = localStorage.getItem(key);
+//     return data ? JSON.parse(data) : null;
+//   },
+//   delete: (key: string): void => {
+//     localStorage.removeItem(key);
+//   },
+// };
+
 export default storage;
