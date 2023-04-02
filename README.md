@@ -17,6 +17,20 @@ Run unit tests with
 yarn test:unit
 ```
 
+## Code style
+Format code with prettier run
+```
+yarn format
+```
+Fix code with eslint run
+```
+yarn lint
+```
+For running eslint and prettier on staged files (although it's automatically triggered on commit) use 
+```
+yarn lint-staged
+```
+
 <br>
 
 ## Deploy
