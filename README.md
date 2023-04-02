@@ -47,8 +47,8 @@ I've added notes into some parts of the app, where some additional work would ne
 - I would probably use SSR/SSG library like <b>Next.js</b> or <b>Gatsby.js</b> for content-driven apps like this one. 
 
 ## Testing
-- Testing is one of my weaker points. I really like concept of TDD, but in smaller FE projects I usually don't have the need for automated testing. This is definitely the part I want to improve in the future. I know testing concepts well and have some experience with JUnit, PHPUnit and a bit of Jest.
-- In this project I skipped testing part entirely.
+- For unit testing, I used a library called <b>Vitest</b> which is similar to Jest but more suitable for usage alongside Vite. I covered just a few utilities just to show how to handle tests. Although I know QA concepts from uni, I like the concept of TDD and have some experience with unit tests, testing is one of my weaker points that I want to improve in the future since I am aware of its importance in the SDLC. 
+- For E2E tests I would use Cypress, which I haven't used properly yet.
 
 ## Docs
 - I am advocate for self-documenting code (especially in frontend) so I usually write just a bunch of MD files.
@@ -57,7 +57,7 @@ I've added notes into some parts of the app, where some additional work would ne
 <br> 
 
 # Final Notes
-Please forgive unfinished styling, full api integration and other stuff. I just wanted to implement some core parts and features to showcase my current expertise, I can finish some bits if necessesary and I am available for discussion over the code anytime.
+Please forgive unfinished styling, full api integration and other stuff. I just wanted to implement some core parts and features to showcase my current expertise, I can finish some bits if necessesary and I am available for discussion over the code anytime. I am also very confident due to the previous experience that I can pick up new things quickly and learn them in advance if necessary.
 
 Thank you and have a great day. :-)) <br>
 Michal
